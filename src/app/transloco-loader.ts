@@ -7,7 +7,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
     private http = inject(HttpClient);
 
     getTranslation(lang: string) {
-        const basePath = isDevMode() ? './' : './angular-test/';
+        const basePath = isDevMode() ? './' : '/angular-test/';
         console.log ('basePath: '+basePath)
         return this.http.get<Translation>(`${basePath}assets/i18n/${lang}.json`);
     }
