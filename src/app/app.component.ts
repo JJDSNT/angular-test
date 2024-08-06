@@ -11,5 +11,5 @@ import { TypewriterComponent } from "./typewriter/typewriter.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'JDias';
+  title = 'JDias ha ha';
 }
