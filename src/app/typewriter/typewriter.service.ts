@@ -34,7 +34,7 @@ export class TypewriterService {
           ? word.substring(0, word.length - x)
           : word.substring(0, x + 1)
       ),
-      take(word.length)
+      take(word.length + 1)
     );
   }
 
