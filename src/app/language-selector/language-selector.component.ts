@@ -11,7 +11,7 @@ import { TranslocoService } from '@jsverse/transloco';
 export class LanguageSelectorComponent implements OnInit {
   private translocoService = inject(TranslocoService);
   currentLang: string = 'pt';
-  currentImage: string = 'assets/brazil-flag.png';
+  currentImage: string = 'assets/usa-flag.png';
   isFlipped: boolean = false;
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class LanguageSelectorComponent implements OnInit {
   updateImage() {
     this.currentImage =
       this.currentLang === 'pt'
-        ? 'assets/brazil-flag.png'
-        : 'assets/usa-flag.png';
+        ? 'assets/usa-flag.png'
+        : 'assets/brazil-flag.png';
   }
 }
