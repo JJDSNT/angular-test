@@ -37,7 +37,7 @@ jobs:
       - run: npm run build --prod
       - uses: actions/upload-pages-artifact@v2
         with:
-          path: "./dist/remnant2build"
+          path: "./dist/angular-test"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
