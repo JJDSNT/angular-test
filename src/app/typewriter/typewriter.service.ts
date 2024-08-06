@@ -48,7 +48,6 @@ export class TypewriterService {
   }
 
   getTypewriterEffect(titles: string[]) {
-    console.log('getTypewriterEffect called with titles:', titles);
     return from(titles).pipe(
       concatMap((title) => this.typeEffect(title)),
       repeat()
