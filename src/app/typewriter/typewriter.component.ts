@@ -13,7 +13,18 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypewriterComponent {
-  titles = ['Hello World', 'How are you?', 'What are you up to?'];
+  titles = [
+    "Desenvolvimento web",
+    "Transformação digital",
+    "Arquitetura de soluções",
+    "Engenharia de software",
+    "Integração de sistemas",
+    "Service Design",
+    "Mapeamento de processos",
+    "Automações",
+    "Infraestrutura DevOps/SRE",
+    "Engenharia de dados"
+  ]
 
   private typewriterService = inject(TypewriterService);
   //typedText$: Observable<string>;
