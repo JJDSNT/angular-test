@@ -11,5 +11,5 @@ import { TypewriterComponent } from "./typewriter/typewriter.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-test';
+  title = 'JDias';
 }
