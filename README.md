@@ -2,10 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
+https://www.thisdot.co/blog/deploying-multiple-apps-from-a-monorepo-to-github-pages
+
+
+https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml (usei esse referencia)
 
 https://github.com/actions/starter-workflows
 
-Testando o workflow depois de ter criado a branch gh-pages, depois colocar proteção no main para só atualizar com pull request
+https://github.com/actions/deploy-pages
+
+
+Testando o workflow, depois colocar proteção no main para só atualizar com pull request
 
 [protegendo um branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule#about-branch-protection-rules)
 
