@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
+import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
+import { CommonModule } from '@angular/common';
 import { TypewriterComponent } from "../typewriter/typewriter.component";
+import { LanguageSelectorComponent } from "../language-selector/language-selector.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [TypewriterComponent],
+  imports: [CommonModule, TranslocoModule, TypewriterComponent, LanguageSelectorComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  title = 'JDias';
-  subtitle = 'Bem-vindo ao meu site';
+  constructor(private translocoService: TranslocoService) {}
 }

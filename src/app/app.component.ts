@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { TypewriterComponent } from "./typewriter/typewriter.component";
 import { UnderConstructionComponent } from "./under-construction/under-construction.component";
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 
 @Component({
   selector: 'app-root',
