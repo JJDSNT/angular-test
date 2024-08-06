@@ -13,18 +13,18 @@ import { AsyncPipe } from '@angular/common';
 })
 export class TypewriterComponent {
   titles = [
-    'Desenvolvimento web',
     'Transformação digital',
-    'Arquitetura de soluções',
+    'Desenvolvimento web',
     'Engenharia de software',
+    'Arquitetura de soluções',
     'Integração de sistemas',
-    'Service Design',
-    'Mapeamento de processos',
-    'Automações',
-    'Infraestrutura DevOps/SRE',
     'Engenharia de dados',
+    'Infraestrutura DevOps/SRE',
+    'Automações',
+    'Mapeamento de processos',
+    'Service Design',
   ];
-
+  
   private typewriterService = inject(TypewriterService);
   
   //typedText$: Observable<string>;
