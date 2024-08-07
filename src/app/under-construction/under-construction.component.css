@@ -10,7 +10,6 @@
   align-items: center;
   width: 100%;
   height: calc(85vh - 2rem);
-  overflow-y: hidden;
   padding: 0;
   margin: 0;
 }

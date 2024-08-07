@@ -15,24 +15,31 @@ gsap.registerPlugin(ScrollTrigger);
 export class ContentComponent implements OnInit {
   @Input() index!: number;
 
+  title: string = '';
+  content: string = '';
+
   constructor(
     private elementRef: ElementRef,
     private translocoService: TranslocoService
   ) {}
 
   ngOnInit(): void {
-    const el = this.elementRef.nativeElement;
+    const el = this.elementRef.nativeElement.querySelector('.content-section');
+
+    this.translocoService.selectTranslateObject(`content${this.index}Title`).subscribe(title => {
+      this.title = title;
+    });
+    this.translocoService.selectTranslateObject(`content${this.index}`).subscribe(content => {
+      this.content = content;
+    });
 
     ScrollTrigger.create({
       trigger: el,
       start: 'top 80%',
       onEnter: () => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 1 }
-        );
-      },
+        console.log('Element entered view:', el);
+        gsap.to(el, { opacity: 1, y: 0, duration: 1 });
+      }
     });
   }
 }
