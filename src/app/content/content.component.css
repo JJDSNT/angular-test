@@ -5,9 +5,18 @@
 
 .content-section {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.5s, transform 0.5s;
-  padding:60px;
+  transition: opacity 0.5s;
+  padding: 60px;
+}
+
+.text-element {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.image-element {
+  opacity: 0;
+  transform: translateX(-50px);
 }
 
 @media (max-width: 600px) {

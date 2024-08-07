@@ -2,7 +2,7 @@
   margin-top: 60px; /* Ajuste conforme a altura do seu header */
   margin-bottom: 40px; /* Ajuste conforme a altura do seu footer */
   flex: 1 0 auto;
-  background-color: red;
+  /*background-color: red;*/
   padding: 0px; /* Ajuste o padding conforme necessário */
   justify-content: center;
   align-items: center;
