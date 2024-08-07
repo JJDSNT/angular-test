@@ -23,6 +23,18 @@ footer {
   width: 100%;
 }
 
+p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre o texto e o logo */
+  font-size: 1rem;
+}
+
+.logo-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
 .social-icons {
   display: flex;
   gap: 1rem;
