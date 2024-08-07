@@ -1,8 +1,9 @@
 {
+  "metaDescription": "Portfólio de apresentação",
   "underConstructionTitle": "Página em Construção",
   "underConstructionContent": "Estamos trabalhando para trazer novidades em breve. Fique ligado!",
   "headerTitle": "JDias",
-  "metaDescription": "Portfólio de apresentação",
+  "footerMessage":"Feito com ❤️ e com o Angular",
   "typewriterTitles": [
     "Transformação digital",
     "Desenvolvimento web",
