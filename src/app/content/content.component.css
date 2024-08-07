@@ -1,0 +1,4 @@
+.content-section {
+  opacity: 0; /* Inicia invisível para a animação */
+  transition: opacity 0.5s, transform 0.5s;
+}
