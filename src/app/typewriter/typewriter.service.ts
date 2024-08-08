@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { interval, concat, from, of } from 'rxjs';
+import { BehaviorSubject, interval, concat, from, of } from 'rxjs';
 import {
   map,
   take,
@@ -9,16 +9,20 @@ import {
   repeat,
 } from 'rxjs/operators';
 
-interface TypeParams {
-  word: string;
-  speed: number;
-  backwards?: boolean;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class TypewriterService {
+  private titleSubject = new BehaviorSubject<string>('');
+
+  setTitle(title: string) {
+    this.titleSubject.next(title);
+  }
+
+  getTitleObservable() {
+    return this.titleSubject.asObservable();
+  }
+
   private type({
     word,
     speed,

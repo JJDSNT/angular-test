@@ -1,6 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { TypewriterService } from './typewriter.service';
-import { map, Observable, Subscription } from 'rxjs';
+import { map, Observable, Subscription, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
 
@@ -17,28 +23,40 @@ export class TypewriterComponent implements OnInit {
   private typewriterService = inject(TypewriterService);
   private translocoService = inject(TranslocoService);
   private cdr = inject(ChangeDetectorRef);
-  
+
   private subscription: Subscription = new Subscription();
 
   ngOnInit() {
+    // Assina as traduções dos títulos
     this.subscription.add(
-      this.translocoService.selectTranslateObject('typewriterTitles').subscribe((titles: string[]) => {
-        if (titles && titles.length) {
-          this.typedText$ = this.typewriterService.getTypewriterEffect(titles).pipe(
-            map((text) => {
-              //console.log('Typed text:', text);
+      this.translocoService
+        .selectTranslateObject('typewriterTitles')
+        .subscribe((titles: string[]) => {
+          if (titles && titles.length) {
+            // Observe changes in the title and perform actions if needed
+            this.typewriterService.getTitleObservable().subscribe((title) => {
+              console.log('Título recebido no componente: ' + title);
+              // Adicione qualquer lógica adicional aqui, se necessário
+            });
+            this.typewriterService.getTitleObservable().subscribe((title) => {
+              if (title) {
+                // Se um título for recebido, exiba-o diretamente
+                this.typedText$ = of(title);
+              } else {
+                // Se nenhum título for recebido, continue com o efeito de typewriter
+                this.typedText$ = this.typewriterService
+                  .getTypewriterEffect(titles)
+                  .pipe(
+                    map((text) => {
+                      this.cdr.markForCheck(); // Força a detecção de mudanças
+                      return text;
+                    })
+                  );
+              }
               this.cdr.markForCheck(); // Força a detecção de mudanças
-              return text;
-            })
-          );
-
-          this.subscription.add(
-            this.typedText$.subscribe(text => {
-              //console.log('Text emitted by typedText$: ', text);
-            })
-          );
-        }
-      })
+            });
+          }
+        })
     );
   }
 

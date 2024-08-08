@@ -55,13 +55,14 @@ export class ContentComponent implements OnInit {
             end: 'top 20%',
             toggleActions: 'play reverse play reverse',
             onEnter: () => {
-              console.log("enviando "+this.title);
-              //this.typewriterService.setTitle(this.title);
+              this.typewriterService.setTitle(this.title);
             },
           },
         }
       );
     }
+
+
 
     if (imageElement) {
       gsap.fromTo(
