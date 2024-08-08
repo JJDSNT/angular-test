@@ -4,9 +4,11 @@ import {
   inject,
   OnInit,
   ChangeDetectorRef,
+  OnDestroy,
 } from '@angular/core';
 import { TypewriterService } from './typewriter.service';
-import { map, Observable, Subscription, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { AsyncPipe } from '@angular/common';
 import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
 
@@ -18,49 +20,45 @@ import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
   styleUrls: ['./typewriter.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TypewriterComponent implements OnInit {
+export class TypewriterComponent implements OnInit, OnDestroy {
   typedText$: Observable<string> = new Observable<string>();
   private typewriterService = inject(TypewriterService);
   private translocoService = inject(TranslocoService);
   private cdr = inject(ChangeDetectorRef);
 
-  private subscription: Subscription = new Subscription();
+  private destroy$ = new Subject<void>();
 
   ngOnInit() {
-    // Assina as traduções dos títulos
-    this.subscription.add(
-      this.translocoService
-        .selectTranslateObject('typewriterTitles')
-        .subscribe((titles: string[]) => {
+    this.translocoService
+      .selectTranslateObject('typewriterTitles')
+      .pipe(
+        switchMap((titles: string[]) => {
           if (titles && titles.length) {
-            // Observe changes in the title and perform actions if needed
-            this.typewriterService.getTitleObservable().subscribe((title) => {
-              console.log('Título recebido no componente: ' + title);
-              // Adicione qualquer lógica adicional aqui, se necessário
-            });
-            this.typewriterService.getTitleObservable().subscribe((title) => {
-              if (title) {
-                // Se um título for recebido, exiba-o diretamente
-                this.typedText$ = of(title);
-              } else {
-                // Se nenhum título for recebido, continue com o efeito de typewriter
-                this.typedText$ = this.typewriterService
-                  .getTypewriterEffect(titles)
-                  .pipe(
-                    map((text) => {
-                      this.cdr.markForCheck(); // Força a detecção de mudanças
-                      return text;
-                    })
-                  );
-              }
-              this.cdr.markForCheck(); // Força a detecção de mudanças
-            });
+            return this.typewriterService.getTitleObservable().pipe(
+              switchMap((title) => {
+                if (title) {
+                  return of(title); // Exibe o título diretamente
+                } else {
+                  return this.typewriterService.getTypewriterEffect(titles); // Efeito de typewriter
+                }
+              }),
+              map((text) => {
+                this.cdr.markForCheck(); // Força a detecção de mudanças
+                return text;
+              })
+            );
           }
-        })
-    );
+          return of(''); // Caso não haja títulos disponíveis
+        }),
+        takeUntil(this.destroy$) // Limpeza automática quando o componente for destruído
+      )
+      .subscribe((text) => {
+        this.typedText$ = of(text);
+      });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
