@@ -6,6 +6,7 @@ import { UnderConstructionComponent } from './under-construction/under-construct
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentListComponent } from './content-list/content-list.component';
+import { AnimationComponent } from "./animation/animation.component";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { ContentListComponent } from './content-list/content-list.component';
     UnderConstructionComponent,
     FooterComponent,
     ContentListComponent,
-  ],
+    AnimationComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
