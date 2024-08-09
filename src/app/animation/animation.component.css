@@ -3,6 +3,54 @@
   padding: 0;
 }
 
+html,
+body {
+  margin: 0;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  font-family: "Signika Negative", sans-serif, Arial;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* SCROLL DOWN */
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: black;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+  overflow: visible;
+}
+.scroll-down .arrow {
+  position: relative;
+  top: -4px;
+  margin: 0 auto;
+  width: 20px;
+  height: 20px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
+  background-size: contain;
+}
+
+.arrow-right {
+  transform: rotate(-90deg);
+  position: relative;
+  top: -4px;
+  margin: 1rem auto;
+  width: 20px;
+  height: 20px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
+  background-size: contain;
+}
+
+/*containers*/
 .firstContainer {
   display: flex;
   flex-direction: column;
@@ -12,10 +60,27 @@
   background: yellow;
 }
 
+.firstContainer h1 {
+  font-size: 1.8em;
+  color: black;
+  font-weight: 300;
+  margin: 0 auto;
+}
+
 .lastContainer {
   display: flex;
   height: 100vh;
   background: yellow;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lastContainer h1 {
+  font-size: 1.8em;
+  color: black;
+  font-weight: 300;
+  margin: 0 auto;
 }
 
 .container {
@@ -26,13 +91,9 @@
 }
 
 .panel {
-  flex: 0 0 100vw;
-  
-}
-
-.panel {
   width: 100%;
   height: 100%;
+  flex: 0 0 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,17 +106,8 @@
   padding: 10px;
 }
 
-.blue {
-  background-color: blue;
-}
-.red {
-  background-color: red;
-}
-.orange {
-  background-color: orange;
-}
-.purple {
-  background-color: purple;
+.panel.description {
+  padding-bottom: 60px;
 }
 
 .panel.align-top {
@@ -71,29 +123,22 @@
 .panel.description {
   padding-bottom: 60px;
 }
-.panel p,
-.panel li {
-  color: black;
-  font-weight: 400;
-  text-align: left;
-  font-size: 0.8em;
-  line-height: 1.5em;
-  margin: 0.3em 0 1em 0;
+
+.blue {
+  background-color: blue;
 }
-.panel p strong,
-.panel li strong {
-  color: white;
-  font-weight: 400;
+.red {
+  background-color: red;
 }
-.panel p code,
-.panel li code {
-  background-color: rgba(255, 255, 255, 0.15);
-  padding: 2px 4px;
-  border-radius: 5px;
+.orange {
+  background-color: orange;
 }
-.panel li {
-  margin: 0;
+.purple {
+  background-color: purple;
 }
+
+
+/*cores*/
 .gray {
   background-color: #777;
   background-image: radial-gradient(
@@ -436,60 +481,3 @@
     linear-gradient(90deg, #28a92b, #10a614);
 }
 
-html,
-body {
-  margin: 0;
-  height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
-  font-family: "Signika Negative", sans-serif, Arial;
-}
-
-
-
-body {
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-h1,
-h2,
-p,
-li {
-  max-width: 800px;
-}
-
-
-
-/* SCROLL DOWN */
-.scroll-down {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  color: black;
-  font-weight: 400;
-  text-transform: uppercase;
-  font-size: 16px;
-  overflow: visible;
-}
-.scroll-down .arrow {
-  position: relative;
-  top: -4px;
-  margin: 0 auto;
-  width: 20px;
-  height: 20px;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
-  background-size: contain;
-}
-
-.arrow-right {
-  transform: rotate(-90deg);
-  position: relative;
-  top: -4px;
-  margin: 1rem auto;
-  width: 20px;
-  height: 20px;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
-  background-size: contain;
-}

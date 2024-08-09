@@ -4,8 +4,8 @@ header {
   left: 0;
   width: 100%;
   background-color: #f8f9fa;
-  z-index: 1000; 
   padding: 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   flex: 0 0 auto;
+  z-index: 10;
 }
